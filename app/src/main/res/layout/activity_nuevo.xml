@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NuevoActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nuevo Evento:"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="411dp"
+            android:layout_height="731dp"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/viewTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_titulo"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtTitulo"
+                android:layout_width="381dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:labelFor="@+id/viewTitulo"
+                android:maxLength="30"
+                android:textColor="#181718"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/bHora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#822DE3"
+                android:onClick="onClick"
+                android:text="Hora"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/eHora"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textColor="#100F0F"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/bFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#822DE3"
+                android:onClick="onClick"
+                android:text="Fecha"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/eFecha"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:textColor="#181718"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/viewDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_direccion"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtDireccion"
+                android:layout_width="381dp"
+                android:layout_height="70dp"
+                android:ems="10"
+                android:inputType="text"
+                android:labelFor="@+id/viewDireccion"
+                android:maxLength="50"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/viewDescripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_descripcion"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtDescripcion"
+                android:layout_width="378dp"
+                android:layout_height="67dp"
+                android:ems="10"
+                android:inputType="text"
+                android:labelFor="@+id/viewDescripcion"
+                android:maxLength="70"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="379dp"
+                android:layout_height="24dp"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnGuarda"
+                android:layout_width="384dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:backgroundTint="#822DE3"
+                android:text="@string/btn_guarda"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="385dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#822DE3"
+                android:text="Borrar"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
