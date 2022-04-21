@@ -33,6 +33,7 @@ public class NuevoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo);
 
+        // HOLA JOSEEEEEEEEE
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         bFecha = (Button) findViewById(R.id.bFecha);
