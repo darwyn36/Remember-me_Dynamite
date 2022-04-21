@@ -35,6 +35,9 @@ public class NuevoActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+
+
+
         bFecha = (Button) findViewById(R.id.bFecha);
         bHora = (Button) findViewById(R.id.bHora);
         eFecha = (TextView) findViewById(R.id.eFecha);
