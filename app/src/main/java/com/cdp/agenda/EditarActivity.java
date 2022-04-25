@@ -42,14 +42,13 @@ public class EditarActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-//------------------------DARWYN
+
         aHora=(Button)findViewById(R.id.aHora);
         aFecha=(Button)findViewById(R.id.aFecha);
         eHora= findViewById(R.id.eHora);
         eFecha= findViewById(R.id.eFecha);
         aHora.setOnClickListener(this::onClick);
         aFecha.setOnClickListener(this::onClick);
-//----------------------------------
 
 
         txtTitulo = findViewById(R.id.txtTitulo);
@@ -81,10 +80,8 @@ public class EditarActivity extends AppCompatActivity {
             eFecha.setText(contacto.getFecha());
             txtDireccion.setText(contacto.getDireccion());
             txtDescripcion.setText(contacto.getDescripcion());
-            //-----------------DARWYN-----
             eHora.setInputType(InputType.TYPE_NULL);
             eFecha.setInputType(InputType.TYPE_NULL);
-//---------------------------
         }
 
         btnGuarda.setOnClickListener(new View.OnClickListener() {
@@ -117,10 +114,14 @@ public class EditarActivity extends AppCompatActivity {
         intent.putExtra("ID", id);
         startActivity(intent);
     }
-    //----------------------------------------------------------DARWYN
     public void onClick(View v) {
 
         if (v == aFecha) {
+            final Calendar now = Calendar.getInstance();
+            int actualDay = now.get(Calendar.DAY_OF_MONTH);
+            int actualMonth = now.get(Calendar.MONTH)+1;
+            int actualYear = now.get(Calendar.YEAR);
+
             final Calendar c = Calendar.getInstance();
             dia = c.get(Calendar.DAY_OF_MONTH);
             mes = c.get(Calendar.MONTH);
@@ -131,18 +132,23 @@ public class EditarActivity extends AppCompatActivity {
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                     String mes = (monthOfYear+1)+ "";
                     String dia= dayOfMonth+"";
-                    if((monthOfYear+1)<10){
-                        mes = "0"+(monthOfYear+1);
-
+                    if((monthOfYear+1)<10){mes = "0"+(monthOfYear+1);}
+                    if(dayOfMonth<10){dia = "0"+(dayOfMonth);}
+                    if(year > actualYear){
+                        eFecha.setText(year+ "-" + mes + "-" + dia);
+                    }else if(year < actualYear){
+                        Toast.makeText(EditarActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                    }else if(year == actualYear){
+                        if((monthOfYear+1)>actualMonth){
+                            eFecha.setText(year+ "-" + mes + "-" + dia);
+                        }else if((monthOfYear+1)<actualMonth){
+                            Toast.makeText(EditarActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        }else if((monthOfYear+1)==actualMonth){
+                            if(dayOfMonth>=actualDay){
+                                eFecha.setText(year+ "-" + mes + "-" + dia);
+                            }else Toast.makeText(EditarActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        }
                     }
-                    if(dayOfMonth<10){
-                        dia = "0"+(dayOfMonth);
-
-                    }
-
-
-
-                    eFecha.setText(year + "-" + mes + "-" + dia);
 
                 }
             }, 2022, mes, dia);
@@ -162,6 +168,4 @@ public class EditarActivity extends AppCompatActivity {
             timePickerDialog.show();
         }
     }
-    //----------------------------------------------------
-
 }

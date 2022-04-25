@@ -24,7 +24,7 @@ public class NuevoActivity extends AppCompatActivity {
 
     EditText txtTitulo, txtDireccion, txtDescripcion;
     TextView eHora,eFecha;
-    Button btnGuarda, bFecha, bHora;
+    Button btnGuarda, bFecha, bHora, borrar;
     Activity actividad;
     private int dia, mes, anio, hora, minutos;
 
@@ -73,6 +73,12 @@ public class NuevoActivity extends AppCompatActivity {
                 }
             }
         });
+        borrar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                limpiar();
+            }
+        });
     }
 
     private void limpiar() {
@@ -87,6 +93,11 @@ public class NuevoActivity extends AppCompatActivity {
   //  @Override
     public void onClick(View v) {
         if (v == bFecha) {
+            final Calendar now = Calendar.getInstance();
+            int actualDay = now.get(Calendar.DAY_OF_MONTH);
+            int actualMonth = now.get(Calendar.MONTH)+1;
+            int actualYear = now.get(Calendar.YEAR);
+
             final Calendar c = Calendar.getInstance();
             dia = c.get(Calendar.DAY_OF_MONTH);
             mes = c.get(Calendar.MONTH);
@@ -105,14 +116,27 @@ public class NuevoActivity extends AppCompatActivity {
                         dia = "0"+(dayOfMonth);
 
                     }
-
-
-
-                    eFecha.setText(year + "-" + mes + "-" + dia);
+                    if(year > actualYear){
+                        eFecha.setText(year+ "-" + mes + "-" + dia);
+                    }else if(year < actualYear){
+                        Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                    }else if(year == actualYear){
+                        if((monthOfYear+1)>actualMonth){
+                            eFecha.setText(year+ "-" + mes + "-" + dia);
+                        }else if((monthOfYear+1)<actualMonth){
+                            Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        }else if((monthOfYear+1)==actualMonth){
+                            if(dayOfMonth>=actualDay){
+                                eFecha.setText(year+ "-" + mes + "-" + dia);
+                            }else Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
                 }
             }, 2022, mes, dia);
+
             datePickerDialog.show();
+
         }
         if (v == bHora) {
             final Calendar c = Calendar.getInstance();
