@@ -4,6 +4,17 @@
     android:versionCode="2"
     android:versionName="1.1">
 
+    //lo siguiente son permisos para las notificaciones
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- MAKE ALARMS RESTART ON REBOOT -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    //hasta aqui los permisos para notificaciones
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -42,8 +53,25 @@
             android:name=".MainActivity"
            >
 
-
         </activity>
+
+        <receiver
+            android:name="com.cdp.agenda.AlarmReceiver"
+            android:enabled="true" />
+
+        <service
+            android:name="com.cdp.agenda.NotificationService"
+            android:enabled="true" /> <!-- MAKE ALARMS RESTART ON REBOOT -->
+
+        <service android:name=".RebootServiceClass" />
+
+        <receiver android:name=".MyRebootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
