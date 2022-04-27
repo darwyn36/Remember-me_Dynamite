@@ -55,7 +55,7 @@ public class NotificationService extends IntentService {
         Resources res = this.getResources();
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM); //para el sonido de la alarma
 
-        String message = getString(R.string.hint_descripcion) + "";//aqui se cambia para la descripcion de la notificacion
+        String message = "Tienes un nuevo evento que atender, presiona para más información";//aqui se cambia para la descripcion de la notificacion
         //String message = intent2.getStringExtra();
 
         //si el sistema esta funcionando con versiones que esta por encima de Android Oreo "O"
@@ -82,7 +82,7 @@ public class NotificationService extends IntentService {
             mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT); //la pantalla de donde se realizo la configuracion de la notificacion
             //"pendingIntent" pendiente de que el usuario haga click en la notificación
-            builder.setContentTitle(getString(R.string.hint_titulo)).setCategory(Notification.CATEGORY_SERVICE) //aqui para el titulo en android 8 o superior
+            builder.setContentTitle(getApplicationContext().getString(R.string.app_name)).setCategory(Notification.CATEGORY_SERVICE) //aqui para el titulo en android 8 o superior
                     .setSmallIcon(R.drawable.ic_stat_name)   // required
                     .setContentText(message)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_stat_name))
@@ -105,7 +105,7 @@ public class NotificationService extends IntentService {
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_stat_name))
                     .setSound(soundUri)
                     .setAutoCancel(true)
-                    .setContentTitle(getString(R.string.hint_titulo)).setCategory(Notification.CATEGORY_SERVICE) //titulo notificacion
+                    .setContentTitle(getApplicationContext().getString(R.string.app_name)).setCategory(Notification.CATEGORY_SERVICE) //titulo notificacion
                     .setContentText(message).build();
             notificationManager.notify(NOTIFICATION_ID, notification);
         }
