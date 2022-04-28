@@ -4,4 +4,10 @@
     <string name="hint_direccion">Dirección:</string>
     <string name="hint_descripcion">Descripción:</string>
     <string name="btn_guarda"> Guardar </string>
+
+
+    <string-array name="Rol">
+        <item>Adulto</item>
+        <item>Responsable</item>
+    </string-array>
 </resources>
