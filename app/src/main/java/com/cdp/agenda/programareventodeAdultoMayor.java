@@ -29,7 +29,7 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
     TextView eHora,eFecha;
 
     Button btnGuarda,aHora,aFecha;
-    FloatingActionButton fabEditar, fabEliminar;
+    //FloatingActionButton fabEditar, fabEliminar;
     boolean correcto = false;
     Contactos contacto;
     int id = 0;
@@ -44,28 +44,28 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 //------------------------DARWYN
-        aHora=(Button)findViewById(R.id.aHora);
-        aFecha=(Button)findViewById(R.id.aFecha);
-        eHora= findViewById(R.id.eHora);
-        eFecha= findViewById(R.id.eFecha);
+        aHora=(Button)findViewById(R.id.Hora);
+        aFecha=(Button)findViewById(R.id.Fecha);
+        eHora= findViewById(R.id.editTextTextPersonName2);
+        eFecha= findViewById(R.id.editTextTextPersonName3);
         aHora.setOnClickListener(this::onClick);
         aFecha.setOnClickListener(this::onClick);
 //----------------------------------
 
 
-        txtTitulo = findViewById(R.id.txtTitulo);
-        txtDireccion = findViewById(R.id.txtDireccion);
-        txtDescripcion = findViewById(R.id.txtDescripcion);
-        btnGuarda = findViewById(R.id.btnGuarda);
-        fabEditar = findViewById(R.id.fabEditar);
+        txtTitulo = findViewById(R.id.txtTitulo2);
+        txtDireccion = findViewById(R.id.editTextTextPersonName4);
+        txtDescripcion = findViewById(R.id.editTextTextPersonName5);
+        btnGuarda = (Button) findViewById(R.id.Guardar);
+        /*fabEditar = findViewById(R.id.fabEditar);
         fabEditar.setVisibility(View.INVISIBLE);
         fabEliminar = findViewById(R.id.fabEliminar);
-        fabEliminar.setVisibility(View.INVISIBLE);
+        fabEliminar.setVisibility(View.INVISIBLE);*/
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
-                id = Integer.parseInt(null);
+                id = Integer.parseInt("0"); //Cambiando de null a 0
             } else {
                 id = extras.getInt("ID");
             }
@@ -93,11 +93,14 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
             public void onClick(View view) {
                 if (!txtTitulo.getText().toString().equals("") && !eHora.getText().toString().equals("") &&
                         !eFecha.getText().toString().equals("")) {
-                    correcto = dbContactos.editarContacto(id, txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
+                    /*correcto = dbContactos.editarContacto(id, txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
+                            txtDireccion.getText().toString(), txtDescripcion.getText().toString()
+                    );*/
+                    id = (int) dbContactos.insertarContacto(txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
                             txtDireccion.getText().toString(), txtDescripcion.getText().toString()
                     );
 
-                    if(correcto){
+                    if(id!=0){
                         Toast.makeText(programareventodeAdultoMayor.this, "REGISTRO MODIFICADO", Toast.LENGTH_LONG).show();
                         verRegistro();
                     } else {

@@ -23,7 +23,7 @@ public class pantalla extends AppCompatActivity {
             public void run() {
                 Intent intent= new Intent(pantalla.this, loginPrueba.class);
                 startActivity(intent);//para que se pase a la otra actividad
-                finish();// se termina la actividdad y se pasa a la otra
+                finish();// se termina la actividad y se pasa a la otra
 
 
             }
