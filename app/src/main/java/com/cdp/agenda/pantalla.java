@@ -21,7 +21,7 @@ public class pantalla extends AppCompatActivity {
         TimerTask tarea = new TimerTask() {
             @Override
             public void run() {
-                Intent intent= new Intent(pantalla.this, MainActivity.class);
+                Intent intent= new Intent(pantalla.this, LoginActivity.class);
                 startActivity(intent);//para que se pase a la otra actividad
                 finish();// se termina la actividdad y se pasa a la otra
 
