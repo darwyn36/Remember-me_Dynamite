@@ -92,6 +92,13 @@ public class EditarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!txtTitulo.getText().toString().equals("") && !eHora.getText().toString().equals("") &&
                         !eFecha.getText().toString().equals("")) {
+
+                    String[] parts = txtTitulo.getText().toString().split("");
+                    String primero  =parts[0];
+                    if (primero.equals(" ")){
+                        Toast.makeText(EditarActivity.this, "Llenar campo de Tìtulo", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     correcto = dbContactos.editarContacto(id, txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
                             txtDireccion.getText().toString(), txtDescripcion.getText().toString()
                             );

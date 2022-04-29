@@ -24,7 +24,7 @@ public class NuevoActivity extends AppCompatActivity {
 
     EditText txtTitulo, txtDireccion, txtDescripcion;
     TextView eHora,eFecha;
-    Button btnGuarda, bFecha, bHora;
+    Button btnGuarda, btnBorrar, bFecha, bHora;
     Activity actividad;
     private int dia, mes, anio, hora, minutos;
 
@@ -46,6 +46,7 @@ public class NuevoActivity extends AppCompatActivity {
         txtDireccion = findViewById(R.id.txtDireccion);
         txtDescripcion = findViewById(R.id.txtDescripcion);
         btnGuarda = findViewById(R.id.btnGuarda);
+        btnBorrar = findViewById(R.id.btnBorrar);
         actividad=this;
         btnGuarda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +54,13 @@ public class NuevoActivity extends AppCompatActivity {
 
                 if (!txtTitulo.getText().toString().equals("")
                         && !eFecha.getText().toString().equals("")&& !eHora.getText().toString().equals("")) {
+
+                    String[] parts = txtTitulo.getText().toString().split("");
+                    String primero  =parts[0];
+                    if (primero.equals(" ")){
+                        Toast.makeText(NuevoActivity.this, "Llenar campo de Tìtulo", Toast.LENGTH_LONG).show();
+                        return;
+                    }
 
                     DbContactos dbContactos = new DbContactos(NuevoActivity.this);
                     long id = dbContactos.insertarContacto(txtTitulo.getText().toString(), eHora.getText().toString(),eFecha.getText().toString(),txtDireccion.getText().toString(), txtDescripcion.getText().toString());
@@ -71,6 +79,12 @@ public class NuevoActivity extends AppCompatActivity {
                     txtTitulo.setError("");
                     Toast.makeText(NuevoActivity.this, "Error complete los datos obligatorios", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        btnBorrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                limpiar();
             }
         });
     }

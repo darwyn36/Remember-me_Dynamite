@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".VerActivity">
 
     <TextView
@@ -23,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight=".9"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
 
 
@@ -50,7 +52,7 @@
                 android:id="@+id/aFecha"
                 android:layout_width="123dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#822DE3"
+                android:backgroundTint="#005F73"
                 android:text="Fecha"
                 android:textColor="#FFFFFF" />
 
@@ -65,7 +67,7 @@
                 android:id="@+id/aHora"
                 android:layout_width="122dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#822DE3"
+                android:backgroundTint="#005F73"
                 android:text="Hora"
                 android:textColor="#FFFFFF" />
 
@@ -119,7 +121,7 @@
                 android:layout_width="121dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:backgroundTint="#822DE3"
+                android:backgroundTint="#005F73"
                 android:text="@string/btn_guarda"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#2E0F77" />
