@@ -94,6 +94,8 @@ public class VerActivity extends AppCompatActivity {
                                 if(dbContactos.eliminarContacto(id)){
                                     lista();
                                 }
+
+
                             }
                         })
                         .setNegativeButton("NO", new DialogInterface.OnClickListener() {

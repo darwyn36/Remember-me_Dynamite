@@ -29,9 +29,11 @@ public class NuevoActivity extends AppCompatActivity {
     TextView eHora,eFecha;
     Button btnGuarda, bFecha, bHora;
     Activity actividad;
-    private int dia, mes, anio, hora, minutos;
+    //private int dia, mes, anio, hora, minutos;
     private int alarmID = 1; //para notificaciones
     private SharedPreferences settings; //notificaciones
+
+    private int HORA, MINUTO, DIA, MES, GESTION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,16 @@ public class NuevoActivity extends AppCompatActivity {
                         && !eFecha.getText().toString().equals("")&& !eHora.getText().toString().equals("")) {
 
                     DbContactos dbContactos = new DbContactos(NuevoActivity.this);
+
+                    //crearAlarma
+                    Calendar today = Calendar.getInstance();
+
+                    today.set(GESTION, MES, DIA, HORA, MINUTO, 0);
+
+                    Utils.setAlarm(alarmID, today.getTimeInMillis(), NuevoActivity.this, txtTitulo.getText().toString(), txtDescripcion.getText().toString());
+
+                    Toast.makeText(NuevoActivity.this, ""+today.getTimeInMillis(), Toast.LENGTH_LONG).show();
+
                     long id = dbContactos.insertarContacto(txtTitulo.getText().toString(), eHora.getText().toString(),eFecha.getText().toString(),txtDireccion.getText().toString(), txtDescripcion.getText().toString());
 
                     if (id > 0) {
@@ -95,9 +107,9 @@ public class NuevoActivity extends AppCompatActivity {
     public void onClick(View v) {
         if (v == bFecha) {
             final Calendar c = Calendar.getInstance();
-            dia = c.get(Calendar.DAY_OF_MONTH);
-            mes = c.get(Calendar.MONTH);
-            anio = c.get(Calendar.YEAR);
+            int dia = c.get(Calendar.DAY_OF_MONTH);
+            int mes = c.get(Calendar.MONTH);
+            int anio = c.get(Calendar.YEAR);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -113,7 +125,9 @@ public class NuevoActivity extends AppCompatActivity {
 
                     }
 
-
+                    GESTION = year;
+                    MES = monthOfYear;
+                    DIA = dayOfMonth;
 
                     eFecha.setText(year + "-" + mes + "-" + dia);
 
@@ -123,8 +137,8 @@ public class NuevoActivity extends AppCompatActivity {
         }
         if (v == bHora) {
             final Calendar c = Calendar.getInstance();
-            hora = c.get(Calendar.HOUR_OF_DAY);
-            minutos = c.get(Calendar.MINUTE);
+            int hora = c.get(Calendar.HOUR_OF_DAY);
+            int minutos = c.get(Calendar.MINUTE);
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
@@ -138,23 +152,8 @@ public class NuevoActivity extends AppCompatActivity {
                     if(hourOfDay < 10) finalHour = "0" + hourOfDay; //notificaciones
                     if(minute < 10) finalMinute = "0" + minute; //notificaciones
 
-                    Calendar today = Calendar.getInstance(); //notificaciones
-
-                    today.set(Calendar.HOUR_OF_DAY, hourOfDay); //notificaciones
-                    today.set(Calendar.MINUTE, minute); //notificaciones
-                    today.set(Calendar.SECOND, 0); //notificaciones
-
-                    SharedPreferences.Editor edit = settings.edit(); //notificaciones
-                    edit.putString("hora", finalHour); //notificaciones
-                    edit.putString("minutos", finalMinute); //notificaciones
-
-                    //guarda la notificacion en caso de que se reinicie el dispositivo android
-                    edit.putInt("alarmID", alarmID); //notificaciones
-                    edit.putLong("alarmTime", today.getTimeInMillis()); //notificaciones
-
-                    edit.commit(); //notificaciones
-
-                    Utils.setAlarm(alarmID, today.getTimeInMillis(), NuevoActivity.this);
+                    HORA = hourOfDay;
+                    MINUTO = minute;
                 }
             }, hora, minutos, false);
             timePickerDialog.show();
