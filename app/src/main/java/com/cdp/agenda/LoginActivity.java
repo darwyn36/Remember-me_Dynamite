@@ -21,8 +21,8 @@ public class LoginActivity extends AppCompatActivity {
         contrasenia=(TextInputLayout) findViewById(R.id.contrasenia);
         spiRol = findViewById(R.id.spirol);
     }
-    public void ir(View view){
-        Intent intent= new Intent(LoginActivity.this,MainActivity.class);
+    public void registrar(View view){
+        Intent intent= new Intent(LoginActivity.this,RegistroActivity.class);
         startActivity(intent);
     }
     public void ir2(View view){
