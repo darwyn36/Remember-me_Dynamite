@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFE8D6"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -34,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
             app:boxBackgroundMode="outline"
             app:hintAnimationEnabled="false"
             app:hintEnabled="false">
@@ -63,6 +65,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             app:boxBackgroundMode="outline"
             app:hintAnimationEnabled="false"
             app:hintEnabled="false"
@@ -120,8 +123,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:backgroundTint="#005F73"
             android:onClick="ir"
             android:text="Iniciar Sesión"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -130,8 +135,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:backgroundTint="#005F73"
             android:onClick="ir2"
             android:text="Registrar"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
 
