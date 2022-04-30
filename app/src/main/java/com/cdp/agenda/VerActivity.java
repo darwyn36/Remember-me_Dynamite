@@ -72,7 +72,7 @@ public class VerActivity extends AppCompatActivity {
             txtDireccion.setInputType(InputType.TYPE_NULL);
             txtDescripcion.setInputType(InputType.TYPE_NULL);
         }
-   
+
         fabEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
