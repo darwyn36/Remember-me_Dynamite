@@ -24,7 +24,6 @@ public class vernotificacion extends AppCompatActivity {
         idSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 
 
                 Intent intent =new Intent(Intent.ACTION_MAIN);// llamado al action main
