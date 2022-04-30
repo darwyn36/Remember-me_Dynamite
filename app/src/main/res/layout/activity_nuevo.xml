@@ -135,7 +135,8 @@
                 android:text="@string/btn_guarda"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                tools:ignore="RtlCompat" />
 
             <Button
                 android:id="@+id/button6"

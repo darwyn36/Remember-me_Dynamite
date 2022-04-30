@@ -11,6 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".loginPrueba"
+            android:exported="false" />
+        <activity
+            android:name=".programareventodeAdultoMayor"
+            android:exported="false" />
+        <activity
+            android:name=".pruebaLogin2"
+            android:exported="false" />
+        <activity
             android:name=".NuevoActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -38,12 +47,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity
-            android:name=".MainActivity"
-           >
-
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
