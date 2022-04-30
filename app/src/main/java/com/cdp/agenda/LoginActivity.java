@@ -25,8 +25,12 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent= new Intent(LoginActivity.this,RegistroActivity.class);
         startActivity(intent);
     }
-    public void ir2(View view){
-        String r = String.valueOf(spiRol.getSelectedItem());
-        Toast.makeText(LoginActivity.this, ""+r, Toast.LENGTH_SHORT).show();
+    public void validarDatos(View view){
+        if(!user.getEditText().getText().toString().equals("") && !contrasenia.getEditText().getText().toString().equals("")){
+            Intent intent= new Intent(LoginActivity.this,MainActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(LoginActivity.this, "Usuario o contraseña vacíos", Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -71,17 +71,21 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
             String con = iContra.getText().toString().trim();
             String confiCon = iConfiContra.getText().toString().trim();
             String r = String.valueOf(spiRol.getSelectedItem());
-
-            if(con.equals(confiCon)){
-                if(r.equals("Adulto")){
-                    registrarAdulto(nom, con);
-                }
-                if(r.equals("Responsable")){
-                    registrarResponsable(nom, con);
+            if(!nom.equals("") && !con.equals("") && !confiCon.equals("")){
+                if(con.equals(confiCon)){
+                    if(r.equals("Adulto")){
+                        registrarAdulto(nom, con);
+                    }
+                    if(r.equals("Responsable")){
+                        registrarResponsable(nom, con);
+                    }
+                }else{
+                    Toast.makeText(RegistroActivity.this, "Las contraseñas no Coinciden", Toast.LENGTH_SHORT).show();
                 }
             }else{
-                Toast.makeText(RegistroActivity.this, "Las contraseñas no Coinciden", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistroActivity.this, "Debe llenar todo los campos.", Toast.LENGTH_SHORT).show();
             }
+
 
 
         }

@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="#005F73"
-            android:onClick="ir"
+            android:onClick="validarDatos"
             android:text="Iniciar Sesión"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
