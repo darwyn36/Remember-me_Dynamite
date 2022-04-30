@@ -22,6 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".vernotificacion"
+            android:exported="false" />
+        <activity
             android:name=".NuevoActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -49,6 +52,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
         <activity
             android:name=".MainActivity"
            >
@@ -71,6 +75,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
 
     </application>
 

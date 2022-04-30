@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
-    tools:context=".VerActivity">
+    android:backgroundTint="#FFE8D6"
+    tools:context=".vernotificacion">
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Información de Evento"
+        android:text="ES HOY!!! ES HOY!!!"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -24,8 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight=".9"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
 
 
@@ -116,24 +116,6 @@
                 android:labelFor="@+id/viewDescripcion"
                 android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/btnGuarda"
-                android:layout_width="121dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:backgroundTint="#005F73"
-                android:text="@string/btn_guarda"
-                android:textColor="#FFFFFF"
-                android:textColorHint="#2E0F77" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabEditar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:clickable="true"
-                android:src="@drawable/ic_edit" />
-
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabEliminar"
                 android:layout_width="match_parent"
@@ -142,25 +124,17 @@
                 android:clickable="true"
                 android:src="@drawable/ic_delete" />
 
+            <ImageView
+                android:id="@+id/idSalir"
+                android:layout_width="54dp"
+                android:layout_height="51dp"
+                android:layout_gravity="bottom|end"
+                android:clickable="true"
+                android:src="@drawable/salir"
+                 />
+
         </LinearLayout>
 
     </ScrollView>
 
-
-    <!--
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            tools:ignore="BottomAppBar">
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_edit" />
-
-        </com.google.android.material.bottomappbar.BottomAppBar>-->
 </LinearLayout>
