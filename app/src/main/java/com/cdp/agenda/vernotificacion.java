@@ -20,20 +20,19 @@ public class vernotificacion extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
-        /*idSalir = (ImageView) findViewById(R.id.idSalir);
+        idSalir = (ImageView) findViewById(R.id.idSalir);
         idSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                /*finish();
-                System.exit(0);
+                
 
                 Intent intent =new Intent(Intent.ACTION_MAIN);// llamado al action main
                 intent.addCategory(Intent.CATEGORY_HOME );
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //se borren todas las actividades
                 startActivity(intent);
             }
-        });*/
+        });
        
      /*  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
