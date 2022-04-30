@@ -26,9 +26,17 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void validarDatos(View view){
+        String r = String.valueOf(spiRol.getSelectedItem());
         if(!user.getEditText().getText().toString().equals("") && !contrasenia.getEditText().getText().toString().equals("")){
-            Intent intent= new Intent(LoginActivity.this,MainActivity.class);
-            startActivity(intent);
+            if(r.equals("Adulto")){
+                Intent intent= new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+            if(r.equals("Responsable")){
+               // Intent intent= new Intent(LoginActivity.this,ResponsableMainActivity.class);
+               // startActivity(intent);
+                Toast.makeText(LoginActivity.this, "inserte su activity aqui :v", Toast.LENGTH_LONG).show();
+            }
         }else{
             Toast.makeText(LoginActivity.this, "Usuario o contraseña vacíos", Toast.LENGTH_LONG).show();
         }
