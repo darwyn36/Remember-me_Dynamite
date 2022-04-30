@@ -66,6 +66,7 @@ public class NuevoActivity extends AppCompatActivity {
                     DbContactos dbContactos = new DbContactos(NuevoActivity.this);
 
                     //crearAlarma
+
                     Calendar today = Calendar.getInstance();
 
                     today.set(GESTION, MES, DIA, HORA, MINUTO, 0);

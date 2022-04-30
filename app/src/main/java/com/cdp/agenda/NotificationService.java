@@ -30,6 +30,8 @@ String yourvalue = getIntent.getExtras.getString("key");
 
 public class NotificationService extends IntentService {
 
+    /*private static String EXTRA_NOTIFICATION_ID = "extra notificacion"; //+++++++++
+    private static String ACTION_SNOOZE = "boton de accion";//++++++++++++    */
     private NotificationManager notificationManager;
     private PendingIntent pendingIntent;
     private static int NOTIFICATION_ID = 1;
@@ -51,20 +53,20 @@ public class NotificationService extends IntentService {
         String NOTIFICATION_CHANNEL_ID = getApplicationContext().getString(R.string.app_name);
         Context context = this.getApplicationContext();
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent mIntent = new Intent(this, VerActivity.class); //con este "intent" podemos dirigirnos a otra actividad
+        Intent mIntent = new Intent(this, MainActivity.class); //con este "intent" podemos dirigirnos a otra actividad
         Resources res = this.getResources();
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM); //para el sonido de la alarma
 
         String tituloda = "sin nada";
         String message = "sin nada";
-        String tituloda2 = "sin nada";
-        String message2 = "sin nada";
+        //String tituloda2 = "sin nada";
+        //String message2 = "sin nada";
         //String message = intent2.getStringExtra();
 
         //si el sistema esta funcionando con versiones que esta por encima de Android Oreo "O"
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             final int NOTIFY_ID = 0; // ID of notification
-            final int NOTIFY_ID2 = 1;
+           //final int NOTIFY_ID2 = 1;
             String id = NOTIFICATION_CHANNEL_ID; // default_channel_id
             String id2 = NOTIFICATION_CHANNEL_ID;
             String title = NOTIFICATION_CHANNEL_ID; // Default Channel
@@ -92,6 +94,14 @@ public class NotificationService extends IntentService {
             message = intent2.getStringExtra("mensaje");
             String GROUP_NOTIFICATIONS = "Grupo de notificaciones";//-------intentando grupo de notificaciones
 
+            /*//----------Boton de accion notificacion
+            Intent snoozeIntent = new Intent(this, VerActivity.class);
+            snoozeIntent.setAction(ACTION_SNOOZE);
+            snoozeIntent.putExtra(EXTRA_NOTIFICATION_ID, 0);
+            PendingIntent snoozePendingIntent =
+                    PendingIntent.getBroadcast(this, 0, snoozeIntent, 0);
+            //----------para el boton de accion*/
+
             builder.setContentTitle(tituloda).setCategory(Notification.CATEGORY_SERVICE) //aqui para el titulo en android 8 o superior
                     .setSmallIcon(R.drawable.ic_stat_name)   // required
                     .setContentText(message)
@@ -100,6 +110,7 @@ public class NotificationService extends IntentService {
                     .setAutoCancel(true)
                     .setSound(soundUri)
                     .setContentIntent(pendingIntent)
+                    //.addAction(R.drawable.ic_stat_name,getString(R.string.Ver_Informacion), snoozePendingIntent)//+++++++)
                     .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
             Notification notification = builder.build(); //viene de "notificationManager.notify(idAlarm, mNotifyBuilder.build());"
             notifManager.notify(NOTIFY_ID, notification); //viene de "notificationManager.notify(idAlarm, mNotifyBuilder.build());"
@@ -107,7 +118,7 @@ public class NotificationService extends IntentService {
             startForeground(1, notification);
 
             //----------------intentando crear 2 canales???
-            builder = new NotificationCompat.Builder(context, id2); //id = NOTIFICATION_CHANNEL_ID
+            /*builder = new NotificationCompat.Builder(context, id2); //id = NOTIFICATION_CHANNEL_ID
             mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT); //la pantalla de donde se realizo la configuracion de la notificacion
             //"pendingIntent" pendiente de que el usuario haga click en la notificación
@@ -129,10 +140,13 @@ public class NotificationService extends IntentService {
 
             startForeground(2, notification);
 
-            //-----------------intentando crear 2 canales
+            //-----------------intentando crear 2 canales */
 
             //y esta para versiones que esten por debajo de Android O
         } else {
+            tituloda = intent2.getStringExtra("titulo");
+            message = intent2.getStringExtra("mensaje");
+
             pendingIntent = PendingIntent.getActivity(context, 1, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             notification = new NotificationCompat.Builder(this)
                     .setContentIntent(pendingIntent)

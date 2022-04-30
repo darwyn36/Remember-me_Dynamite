@@ -95,7 +95,6 @@ public class VerActivity extends AppCompatActivity {
                                     lista();
                                 }
 
-
                             }
                         })
                         .setNegativeButton("NO", new DialogInterface.OnClickListener() {

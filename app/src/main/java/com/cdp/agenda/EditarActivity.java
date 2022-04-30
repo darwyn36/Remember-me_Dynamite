@@ -35,7 +35,7 @@ public class EditarActivity extends AppCompatActivity {
     int id = 0;
     //private int dia, mes, anio, hora, minutos;
 
-    private int alarmID = 1;
+    private int alarmID = 2;
 
     private int HORA, MINUTO, DIA, MES, GESTION;
 
