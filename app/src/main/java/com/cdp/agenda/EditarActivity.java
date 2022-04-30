@@ -66,7 +66,7 @@ public class EditarActivity extends AppCompatActivity {
             if (extras == null) {
                 id = Integer.parseInt(null);
             } else {
-                id = extras.getInt("ID");
+                id =   extras.getInt("ID");
             }
         } else {
             id = (int) savedInstanceState.getSerializable("ID");

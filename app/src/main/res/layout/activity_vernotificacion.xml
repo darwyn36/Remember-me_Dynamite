@@ -124,6 +124,15 @@
                 android:clickable="true"
                 android:src="@drawable/ic_delete" />
 
+            <ImageView
+                android:id="@+id/idSalir"
+                android:layout_width="54dp"
+                android:layout_height="51dp"
+                android:layout_gravity="bottom|end"
+                android:clickable="true"
+                android:src="@drawable/salir"
+                 />
+
         </LinearLayout>
 
     </ScrollView>
