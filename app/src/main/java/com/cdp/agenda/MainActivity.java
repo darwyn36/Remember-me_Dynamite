@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     private Spinner spinner;
     private Button boton;
+    private Button button;
 
     SearchView txtBuscar;
     //RecyclerView listaContactos;
@@ -52,6 +53,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 llenarSpinner();
             }
         });
+
+
+            button = (Button)findViewById(R.id.button);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent( MainActivity.this, programareventodeAdultoMayor.class);
+                    startActivity(i);
+                }
+            });
     }
 
     private void llenarSpinner() {
@@ -132,7 +144,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         //adapter.filtrado(s);
         return false;
     }
-
 
 
 }
