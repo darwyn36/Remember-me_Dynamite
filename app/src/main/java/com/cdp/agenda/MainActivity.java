@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent( MainActivity.this, programareventodeAdultoMayor.class);
+                    Intent i = new Intent( MainActivity.this,NuevoActivity.class);
                     startActivity(i);
                 }
             });
