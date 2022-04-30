@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             if(r.equals("Responsable")){
-               // Intent intent= new Intent(LoginActivity.this,ResponsableMainActivity.class);
-               // startActivity(intent);
-                Toast.makeText(LoginActivity.this, "inserte su activity aqui :v", Toast.LENGTH_LONG).show();
+               Intent intent= new Intent(LoginActivity.this,MainActivity.class);
+               startActivity(intent);
+
             }
         }else{
             Toast.makeText(LoginActivity.this, "Usuario o contraseña vacíos", Toast.LENGTH_LONG).show();
