@@ -1,6 +1,7 @@
 package com.cdp.agenda;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -28,6 +29,7 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
     EditText txtTitulo, txtDireccion, txtDescripcion;
     TextView eHora,eFecha;
 
+    Activity actividad;
     Button btnGuarda,aHora,aFecha;
     //FloatingActionButton fabEditar, fabEliminar;
     boolean correcto = false;
@@ -96,15 +98,24 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
                     /*correcto = dbContactos.editarContacto(id, txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
                             txtDireccion.getText().toString(), txtDescripcion.getText().toString()
                     );*/
+                    String[] parts = txtTitulo.getText().toString().split("");
+                    String primero  =parts[0];
+                    if (primero.equals(" ")){
+                        Toast.makeText(programareventodeAdultoMayor.this, "Llenar campo de Tìtulo", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
                     id = (int) dbContactos.insertarContacto(txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
                             txtDireccion.getText().toString(), txtDescripcion.getText().toString()
                     );
 
                     if(id!=0){
-                        Toast.makeText(programareventodeAdultoMayor.this, "REGISTRO MODIFICADO", Toast.LENGTH_LONG).show();
+                        Toast.makeText(programareventodeAdultoMayor.this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
                         verRegistro();
+                        Intent intent = new Intent(actividad, mainAdulto2.class);
+                        startActivity(intent);
                     } else {
-                        Toast.makeText(programareventodeAdultoMayor.this, "ERROR AL MODIFICAR REGISTRO", Toast.LENGTH_LONG).show();
+                        Toast.makeText(programareventodeAdultoMayor.this, "ERROR AL REGISTRAR ACTIVIDAD", Toast.LENGTH_LONG).show();
                     }
                 } else {
                     eHora.setError("");

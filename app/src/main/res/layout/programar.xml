@@ -54,5 +54,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
 
+    <Button
+        android:id="@+id/idverLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VER ACTIVIDADES PROGRAMADAS"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="588dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,12 +58,11 @@
 
    <ImageView
        android:id="@+id/imageView2"
-       android:layout_width="156dp"
-       android:layout_height="130dp"
+       android:layout_width="65dp"
+       android:layout_height="59dp"
        android:layout_gravity="left"
        android:translationX="250dp"
-       app:srcCompat="@drawable/perfil"
-   />
+       app:srcCompat="@drawable/perfil" />
 
 
    <EditText

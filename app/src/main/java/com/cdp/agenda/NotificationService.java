@@ -53,7 +53,7 @@ public class NotificationService extends IntentService {
         String NOTIFICATION_CHANNEL_ID = getApplicationContext().getString(R.string.app_name);
         Context context = this.getApplicationContext();
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent mIntent = new Intent(this, MainActivity.class); //con este "intent" podemos dirigirnos a otra actividad
+        Intent mIntent = new Intent(this, vernotificacion.class); //con este "intent" podemos dirigirnos a otra actividad
         Resources res = this.getResources();
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM); //para el sonido de la alarma
 

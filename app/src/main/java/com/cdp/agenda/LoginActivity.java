@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (contrasenia.equals(contra)) {
                                 if(rol.equals("adulto")) {
-                                    Intent intent = new Intent(LoginActivity.this, mainAdulto.class);
+                                    Intent intent = new Intent(LoginActivity.this, mainAdulto2.class);
                                     startActivity(intent);
                                 }
                                 if(rol.equals("responsable")){

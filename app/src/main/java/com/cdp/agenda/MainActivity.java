@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity  {
     private Spinner spinner;
     private Button boton;
     private Button button;
+    private Button idverLista;
 
     SearchView txtBuscar;
     //RecyclerView listaContactos;
@@ -45,8 +46,17 @@ public class MainActivity extends AppCompatActivity  {
         //inicializar componentes
         spinner = findViewById(R.id.spinner);
         boton = findViewById(R.id.button2);
+        idverLista= findViewById(R.id.idverLista);
 
         //Acciones del boton
+        idverLista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( MainActivity.this,mainAdulto2.class);
+                startActivity(intent);
+
+            }
+        });
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
