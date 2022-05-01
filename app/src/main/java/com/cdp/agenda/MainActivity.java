@@ -24,7 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity  {
+
 
     private Spinner spinner;
     private Button boton;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent( MainActivity.this,NuevoActivity.class);
+                    Intent i = new Intent( MainActivity.this,programareventodeAdultoMayor.class);
                     startActivity(i);
                 }
             });
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         }
     }*/
 
-    private void nuevoRegistro(){
+    /*private void nuevoRegistro(){
         Intent intent = new Intent(this, NuevoActivity.class);
         startActivity(intent);
     }
@@ -144,6 +145,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         //adapter.filtrado(s);
         return false;
     }
-
+*/
 
 }

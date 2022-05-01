@@ -87,11 +87,11 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (contrasenia.equals(contra)) {
                                 if(rol.equals("adulto")) {
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, mainAdulto.class);
                                     startActivity(intent);
                                 }
                                 if(rol.equals("responsable")){
-                                    Intent intent= new Intent(LoginActivity.this,programareventodeAdultoMayor.class);//ventana del responsable
+                                    Intent intent= new Intent(LoginActivity.this,MainActivity.class);//ventana del responsable
                                     startActivity(intent);
                                     Toast.makeText(LoginActivity.this, "Se ingreso a responsable", Toast.LENGTH_LONG).show();
                                 }
