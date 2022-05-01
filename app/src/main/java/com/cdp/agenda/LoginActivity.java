@@ -129,10 +129,10 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
     }
-    public void getUsuario(){
+    public String getUsuario(){
         return usuario;
     }
-    public void getContrasenia(){
+    public String getContrasenia(){
         return contra;
     }
 }
