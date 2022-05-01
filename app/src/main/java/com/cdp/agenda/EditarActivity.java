@@ -1,6 +1,7 @@
 package com.cdp.agenda;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -28,6 +29,8 @@ public class EditarActivity extends AppCompatActivity {
     EditText txtTitulo, txtDireccion, txtDescripcion;
     TextView eHora,eFecha;
 
+    Activity actividad;
+
     Button btnGuarda,aHora,aFecha;
     FloatingActionButton fabEditar, fabEliminar;
     boolean correcto = false;
@@ -41,6 +44,8 @@ public class EditarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ver);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        actividad=this;
 
 //------------------------DARWYN
         aHora=(Button)findViewById(R.id.aHora);
@@ -92,13 +97,25 @@ public class EditarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!txtTitulo.getText().toString().equals("") && !eHora.getText().toString().equals("") &&
                         !eFecha.getText().toString().equals("")) {
+
+                    String[] parts = txtTitulo.getText().toString().split("");
+                    String primero  =parts[0];
+                    if (primero.equals(" ")){
+                        Toast.makeText(EditarActivity.this, "Llenar campo de Tìtulo", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
                     correcto = dbContactos.editarContacto(id, txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
                             txtDireccion.getText().toString(), txtDescripcion.getText().toString()
                             );
 
+
                     if(correcto){
                         Toast.makeText(EditarActivity.this, "REGISTRO MODIFICADO", Toast.LENGTH_LONG).show();
                         verRegistro();
+                        Intent intent = new Intent(actividad, mainAdulto2.class);
+                        startActivity(intent);
+
                     } else {
                         Toast.makeText(EditarActivity.this, "ERROR AL MODIFICAR REGISTRO", Toast.LENGTH_LONG).show();
                     }
@@ -111,6 +128,7 @@ public class EditarActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void verRegistro(){
         Intent intent = new Intent(this, VerActivity.class);

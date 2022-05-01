@@ -73,13 +73,20 @@ public class NuevoActivity extends AppCompatActivity {
                 if (!txtTitulo.getText().toString().equals("")
                         && !eFecha.getText().toString().equals("")&& !eHora.getText().toString().equals("")) {
 
+                    String[] parts = txtTitulo.getText().toString().split("");
+                    String primero  =parts[0];
+                    if (primero.equals(" ")){
+                        Toast.makeText(NuevoActivity.this, "Llenar campo de Tìtulo", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
                     DbContactos dbContactos = new DbContactos(NuevoActivity.this);
                     long id = dbContactos.insertarContacto(titulo,time,fecha,direccion,descripcion);
 
                     if (id > 0) {
                         //Toast.makeText(NuevoActivity.this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
                         limpiar();
-                        Intent intent = new Intent(actividad, MainActivity.class);
+                        Intent intent = new Intent(actividad, mainAdulto2.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(NuevoActivity.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
