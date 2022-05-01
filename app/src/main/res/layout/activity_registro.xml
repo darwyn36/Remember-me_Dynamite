@@ -17,62 +17,61 @@
             android:id="@+id/txttitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_Titulo"
-            android:textColor="#023047"
-            android:textSize="30sp"
-            android:textStyle="bold"
-
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            />
+            android:text="@string/txt_Titulo"
+
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtusuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_NombreUsu"
-            android:textColor="#023047"
-            android:textSize="24sp"
-            android:textStyle="bold"
-
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/txt_NombreUsu"
+
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/inputnombre"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:ems="10"
-            android:maxLength="30"
-            android:inputType="text"
-            android:labelFor="@+id/viewTitulo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-            android:textSize="22sp"
+            android:ems="10"
 
             android:hint="@string/hint_Nombre"
 
-            android:layout_marginTop="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:inputType="text"
+            android:labelFor="@+id/viewTitulo"
+            android:maxLength="30"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            />
+            android:textSize="20sp" />
 
 
         <TextView
             android:id="@+id/txtcontra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_Contra"
-            android:textColor="#023047"
-            android:textSize="24sp"
-            android:textStyle="bold"
-
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/txt_Contra"
+
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/contrasenia"
@@ -106,29 +105,29 @@
                 android:layout_marginTop="1dp"
 
 
+                android:background="#FFFFFF"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@"
-                android:hint="@string/hint_Contra"
 
+                android:hint="@string/hint_Contra"
                 android:inputType="textPassword"
                 android:paddingTop="15dp"
                 android:paddingBottom="8dp"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <TextView
             android:id="@+id/txtconficontra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_ConfiContra"
-            android:textColor="#023047"
-            android:textSize="24sp"
-            android:textStyle="bold"
-
-            android:layout_marginTop="0dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/txt_ConfiContra"
+
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -162,13 +161,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
 
+                android:background="#FFFFFF"
+
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@"
                 android:hint="@string/hint_Contra"
-
                 android:inputType="textPassword"
                 android:paddingTop="15dp"
                 android:paddingBottom="8dp"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -184,14 +184,14 @@
                 android:id="@+id/txtrol"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_Rol"
-                android:textColor="#023047"
-                android:textSize="24sp"
-                android:textStyle="bold"
-
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/txt_Rol"
+
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spirol"
@@ -215,7 +215,7 @@
         <Button
             android:id="@+id/btnregistrar"
 
-            android:layout_width="match_parent"
+            android:layout_width="286dp"
             android:layout_height="65dp"
             android:layout_marginLeft="60dp"
             android:layout_marginTop="10dp"
@@ -225,7 +225,7 @@
             android:onClick="onClick"
             android:text="@string/btn_Registrar"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
@@ -246,7 +246,7 @@
             android:onClick="volverLogin"
             android:text="@string/btn_Cancelar"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:cornerRadius="10dp" />
 
 

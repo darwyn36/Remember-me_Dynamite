@@ -127,7 +127,7 @@
             android:onClick="validarDatos"
             android:text="Iniciar Sesión"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <Button
@@ -139,7 +139,7 @@
             android:onClick="registrar"
             android:text="Registrarse"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>

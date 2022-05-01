@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity  {
     private Button boton;
     private Button button;
     private Button idverLista;
+    ImageView idSalir;
 
     SearchView txtBuscar;
     //RecyclerView listaContactos;
@@ -43,12 +45,24 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.programar);
 
+        idSalir = (ImageView) findViewById(R.id.idSalir);
+
         //inicializar componentes
         spinner = findViewById(R.id.spinner);
         boton = findViewById(R.id.button2);
         idverLista= findViewById(R.id.idverLista);
 
         //Acciones del boton
+
+        idSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
         idverLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,6 +136,8 @@ public class MainActivity extends AppCompatActivity  {
         //});
         //txtBuscar.setOnQueryTextListener(this);
     }
+
+
 
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();

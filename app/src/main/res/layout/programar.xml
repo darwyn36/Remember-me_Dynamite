@@ -5,30 +5,35 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFE8D6"
     tools:context=".MainActivity">
 
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="269dp"
+        android:layout_height="32dp"
         android:layout_marginBottom="248dp"
-        android:layout_marginStart="60dp"
+        android:background="#005F73"
         android:text="Actualizar"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/spinner"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="156dp"
+        android:layout_width="264dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="256dp"
+        android:background="#005F73"
         android:text="Programar Actividad"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.612"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -56,11 +61,34 @@
 
     <Button
         android:id="@+id/idverLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="264dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="59dp"
+        android:background="#005F73"
         android:text="VER ACTIVIDADES PROGRAMADAS"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="588dp" />
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <ImageView
+        android:id="@+id/idSalir"
+        android:layout_width="54dp"
+        android:layout_height="51dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="107dp"
+        android:clickable="true"
+        android:src="@drawable/salir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idverLista" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

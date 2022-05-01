@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.cdp.agenda.adaptadores.ListaContactosAdapter;
@@ -25,11 +26,24 @@ public class mainAdulto2 extends AppCompatActivity implements SearchView.OnQuery
     ArrayList<Contactos> listaArrayContactos;
     FloatingActionButton fabNuevo;
     ListaContactosAdapter adapter;
+    ImageView idSalir;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_adulto2);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        idSalir = (ImageView) findViewById(R.id.idSalir);
+
+        idSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( mainAdulto2.this,LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         txtBuscar = findViewById(R.id.txtBuscar);
         listaContactos = findViewById(R.id.listaContactos);
@@ -52,6 +66,7 @@ public class mainAdulto2 extends AppCompatActivity implements SearchView.OnQuery
 
         txtBuscar.setOnQueryTextListener(this);
     }
+
 
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
