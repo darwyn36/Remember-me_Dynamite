@@ -29,8 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     //variables que guardaran lo que escriba es usuario
     String usuario;
     String contra;
-    //para usarlos creen un objeto tipo LoginActivity y usen los metodos getUsuario y getContrasenia
-    //en teoria asi deberia funcionar, ya que estamos usando JAVA
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,10 +94,14 @@ public class LoginActivity extends AppCompatActivity {
                             if (contrasenia.equals(contra)) {
                                 if(rol.equals("adulto")) {
                                     Intent intent = new Intent(LoginActivity.this, mainAdulto2.class);
+                                    intent.putExtra("usuarioLogin",usuario);
+                                    intent.putExtra("contraseniaLogin",contra);
                                     startActivity(intent);
                                 }
                                 if(rol.equals("responsable")){
                                     Intent intent= new Intent(LoginActivity.this,MainActivity.class);//ventana del responsable
+                                    intent.putExtra("usuarioLogin",usuario);
+                                    intent.putExtra("contraseniaLogin",contra);
                                     startActivity(intent);
                                     Toast.makeText(LoginActivity.this, "Se ingreso a responsable", Toast.LENGTH_LONG).show();
                                 }
@@ -128,11 +131,5 @@ public class LoginActivity extends AppCompatActivity {
 
         requestQueue.add(jsonObjectRequest);
 
-    }
-    public String getUsuario(){
-        return usuario;
-    }
-    public String getContrasenia(){
-        return contra;
     }
 }
