@@ -25,6 +25,13 @@ public class LoginActivity extends AppCompatActivity {
     Spinner spiRol;
     String URL;
     boolean res;
+
+    //variables que guardaran lo que escriba es usuario
+    String usuario;
+    String contra;
+    //para usarlos creen un objeto tipo LoginActivity y usen los metodos getUsuario y getContrasenia
+    //en teoria asi deberia funcionar, ya que estamos usando JAVA
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void validarDatos(View view){
-        String usuario,contra;
+
         usuario=user.getEditText().getText().toString().trim();
         contra=contrasenia.getEditText().getText().toString().trim();
 
@@ -122,6 +129,10 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
     }
-
-
+    public void getUsuario(){
+        return usuario;
+    }
+    public void getContrasenia(){
+        return contra;
+    }
 }
