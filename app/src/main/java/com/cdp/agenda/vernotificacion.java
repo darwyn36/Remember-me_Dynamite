@@ -1,38 +1,39 @@
 package com.cdp.agenda;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cdp.agenda.db.DbContactos;
-import com.cdp.agenda.entidades.Contactos;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+public class vernotificacion extends AppCompatActivity {
 
-public class VerActivity extends AppCompatActivity {
-
-    EditText txtTitulo, txtDireccion, txtDescripcion;
-    Button btnGuarda;
-    FloatingActionButton fabEditar, fabEliminar;
-    TextView eFecha,eHora;
-
-    Contactos contacto;
-    int id = 0;
+    ImageView idSalir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ver);
-
+        setContentView(R.layout.activity_vernotificacion);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+        idSalir = (ImageView) findViewById(R.id.idSalir);
+        idSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+
+                Intent intent =new Intent(Intent.ACTION_MAIN);// llamado al action main
+                intent.addCategory(Intent.CATEGORY_HOME );
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); //se borren todas las actividades
+                startActivity(intent);
+            }
+        });
+       
+     /*  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         txtTitulo = findViewById(R.id.txtTitulo);
         eHora = findViewById(R.id.eHora);
@@ -40,13 +41,12 @@ public class VerActivity extends AppCompatActivity {
         txtDireccion = findViewById(R.id.txtDireccion);
         txtDescripcion = findViewById(R.id.txtDescripcion);
 
-        fabEditar = findViewById(R.id.fabEditar);
         fabEliminar = findViewById(R.id.fabEliminar);
-        btnGuarda = findViewById(R.id.btnGuarda);
-        btnGuarda.setVisibility(View.INVISIBLE);
+        //return;
 
-        if(savedInstanceState == null){
-            Bundle extras = getIntent().getExtras();
+       if(savedInstanceState == null){
+           Bundle extras =getIntent().getExtras();
+
             if(extras == null){
                 id = Integer.parseInt(null);
             } else {
@@ -56,7 +56,7 @@ public class VerActivity extends AppCompatActivity {
             id = (int) savedInstanceState.getSerializable("ID");
         }
 
-        final DbContactos dbContactos = new DbContactos(VerActivity.this);
+        final DbContactos dbContactos = new DbContactos(seerecordatorio.this);
         contacto = dbContactos.verContacto(id);
 
         if(contacto != null){
@@ -73,28 +73,17 @@ public class VerActivity extends AppCompatActivity {
             txtDescripcion.setInputType(InputType.TYPE_NULL);
         }
 
-        fabEditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(VerActivity.this, EditarActivity.class);
-                intent.putExtra("ID", id);
-                startActivity(intent);
-            }
-        });
-
         fabEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(VerActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(seerecordatorio.this);
                 builder.setMessage("¿Desea eliminar este evento?")
                         .setPositiveButton("SI", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
                                 if(dbContactos.eliminarContacto(id)){
                                     lista();
                                 }
-
                             }
                         })
                         .setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -103,12 +92,15 @@ public class VerActivity extends AppCompatActivity {
 
                             }
                         }).show();
+
             }
         });
+*/
     }
-
-    private void lista(){
+    /*private void lista(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
+    }*/
+
+
 }

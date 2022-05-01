@@ -4,9 +4,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlarmManager; //notificaciones
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
@@ -34,11 +37,17 @@ public class NuevoActivity extends AppCompatActivity {
 
     EditText txtTitulo, txtDireccion, txtDescripcion;
     TextView eHora,eFecha;
-    Button btnGuarda, bFecha, bHora;
+    Button btnGuarda, btnBorrar, bFecha, bHora;
     Activity actividad;
-    private int dia, mes, anio, hora, minutos;
+
     private String titulo,time,fecha,direccion,descripcion;
     RequestQueue requestQueue;
+
+    //private int dia, mes, anio, hora, minutos;
+    private int alarmID = 1; //para notificaciones
+    private SharedPreferences settings; //notificaciones
+
+    private int HORA, MINUTO, DIA, MES, GESTION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +55,8 @@ public class NuevoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nuevo);
         requestQueue= Volley.newRequestQueue(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        settings = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);//notificaciones
 
         bFecha = (Button) findViewById(R.id.bFecha);
         bHora = (Button) findViewById(R.id.bHora);
@@ -58,6 +69,7 @@ public class NuevoActivity extends AppCompatActivity {
         txtDireccion = findViewById(R.id.txtDireccion);
         txtDescripcion = findViewById(R.id.txtDescripcion);
         btnGuarda = findViewById(R.id.btnGuarda);
+        btnBorrar = findViewById(R.id.btnBorrar);
         actividad=this;
         btnGuarda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +85,25 @@ public class NuevoActivity extends AppCompatActivity {
                 if (!txtTitulo.getText().toString().equals("")
                         && !eFecha.getText().toString().equals("")&& !eHora.getText().toString().equals("")) {
 
+                    String[] parts = txtTitulo.getText().toString().split("");
+                    String primero  =parts[0];
+                    if (primero.equals(" ")){
+                        Toast.makeText(NuevoActivity.this, "Llenar campo de Tìtulo", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
                     DbContactos dbContactos = new DbContactos(NuevoActivity.this);
+
+                    //crearAlarma
+
+                    Calendar today = Calendar.getInstance();
+
+                    today.set(GESTION, MES, DIA, HORA, MINUTO, 0);
+
+                    Utils.setAlarm(alarmID, today.getTimeInMillis(), NuevoActivity.this, txtTitulo.getText().toString(), txtDescripcion.getText().toString());
+
+                    Toast.makeText(NuevoActivity.this, ""+today.getTimeInMillis(), Toast.LENGTH_LONG).show();
+
                     long id = dbContactos.insertarContacto(titulo,time,fecha,direccion,descripcion);
 
                     if (id > 0) {
@@ -92,6 +122,12 @@ public class NuevoActivity extends AppCompatActivity {
                 }
             }
         });
+        btnBorrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                limpiar();
+            }
+        });
     }
 
     private void limpiar() {
@@ -107,9 +143,9 @@ public class NuevoActivity extends AppCompatActivity {
     public void onClick(View v) {
         if (v == bFecha) {
             final Calendar c = Calendar.getInstance();
-            dia = c.get(Calendar.DAY_OF_MONTH);
-            mes = c.get(Calendar.MONTH);
-            anio = c.get(Calendar.YEAR);
+            int dia = c.get(Calendar.DAY_OF_MONTH);
+            int mes = c.get(Calendar.MONTH);
+            int anio = c.get(Calendar.YEAR);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -125,7 +161,9 @@ public class NuevoActivity extends AppCompatActivity {
 
                     }
 
-
+                    GESTION = year;
+                    MES = monthOfYear;
+                    DIA = dayOfMonth;
 
                     eFecha.setText(year + "-" + mes + "-" + dia);
 
@@ -135,13 +173,23 @@ public class NuevoActivity extends AppCompatActivity {
         }
         if (v == bHora) {
             final Calendar c = Calendar.getInstance();
-            hora = c.get(Calendar.HOUR_OF_DAY);
-            minutos = c.get(Calendar.MINUTE);
+            int hora = c.get(Calendar.HOUR_OF_DAY);
+            int minutos = c.get(Calendar.MINUTE);
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    String finalHour, finalMinute; //notificaciones
+
                     eHora.setText(String.format("%02d:%02d", hourOfDay, minute));
+
+                    finalHour = "" + hourOfDay;//notificaciones
+                    finalMinute = "" + minute; //notificaciones
+                    if(hourOfDay < 10) finalHour = "0" + hourOfDay; //notificaciones
+                    if(minute < 10) finalMinute = "0" + minute; //notificaciones
+
+                    HORA = hourOfDay;
+                    MINUTO = minute;
                 }
             }, hora, minutos, false);
             timePickerDialog.show();

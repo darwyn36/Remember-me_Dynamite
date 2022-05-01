@@ -33,7 +33,12 @@ public class EditarActivity extends AppCompatActivity {
     boolean correcto = false;
     Contactos contacto;
     int id = 0;
-    private int dia, mes, anio, hora, minutos;
+    //private int dia, mes, anio, hora, minutos;
+
+    private int alarmID = 2;
+
+    private int HORA, MINUTO, DIA, MES, GESTION;
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +71,7 @@ public class EditarActivity extends AppCompatActivity {
             if (extras == null) {
                 id = Integer.parseInt(null);
             } else {
-                id = extras.getInt("ID");
+                id =   extras.getInt("ID");
             }
         } else {
             id = (int) savedInstanceState.getSerializable("ID");
@@ -92,9 +97,24 @@ public class EditarActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!txtTitulo.getText().toString().equals("") && !eHora.getText().toString().equals("") &&
                         !eFecha.getText().toString().equals("")) {
+
+                    String[] parts = txtTitulo.getText().toString().split("");
+                    String primero  =parts[0];
+                    if (primero.equals(" ")){
+                        Toast.makeText(EditarActivity.this, "Llenar campo de Tìtulo", Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     correcto = dbContactos.editarContacto(id, txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
                             txtDireccion.getText().toString(), txtDescripcion.getText().toString()
                             );
+
+                    Calendar today = Calendar.getInstance();
+
+                    today.set(GESTION, MES, DIA, HORA, MINUTO, 0);
+
+                    Utils.setAlarm(alarmID, today.getTimeInMillis(), EditarActivity.this, txtTitulo.getText().toString(), txtDescripcion.getText().toString());
+
+                    Toast.makeText(EditarActivity.this, ""+today.getTimeInMillis(), Toast.LENGTH_LONG).show();
 
                     if(correcto){
                         Toast.makeText(EditarActivity.this, "REGISTRO MODIFICADO", Toast.LENGTH_LONG).show();
@@ -122,9 +142,9 @@ public class EditarActivity extends AppCompatActivity {
 
         if (v == aFecha) {
             final Calendar c = Calendar.getInstance();
-            dia = c.get(Calendar.DAY_OF_MONTH);
-            mes = c.get(Calendar.MONTH);
-            anio = c.get(Calendar.YEAR);
+            int dia = c.get(Calendar.DAY_OF_MONTH);
+            int mes = c.get(Calendar.MONTH);
+            int anio = c.get(Calendar.YEAR);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -140,7 +160,9 @@ public class EditarActivity extends AppCompatActivity {
 
                     }
 
-
+                    GESTION = year;
+                    MES = monthOfYear;
+                    DIA = dayOfMonth;
 
                     eFecha.setText(year + "-" + mes + "-" + dia);
 
@@ -150,13 +172,16 @@ public class EditarActivity extends AppCompatActivity {
         }
         if (v == aHora) {
             final Calendar c = Calendar.getInstance();
-            hora = c.get(Calendar.HOUR_OF_DAY);
-            minutos = c.get(Calendar.MINUTE);
+            int hora = c.get(Calendar.HOUR_OF_DAY);
+            int minutos = c.get(Calendar.MINUTE);
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     eHora.setText(String.format("%02d:%02d", hourOfDay, minute));
+
+                    HORA = hourOfDay;
+                    MINUTO = minute;
                 }
             }, hora, minutos, false);
             timePickerDialog.show();

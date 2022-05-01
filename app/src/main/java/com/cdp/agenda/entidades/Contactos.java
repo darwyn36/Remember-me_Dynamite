@@ -1,7 +1,9 @@
 package com.cdp.agenda.entidades;
 
 public class Contactos {
-
+    /*
+    set y get de mis contactos
+     */
     private int id;
     private String titulo;
     private String hora;
