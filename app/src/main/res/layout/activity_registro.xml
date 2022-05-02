@@ -46,6 +46,7 @@
             android:layout_height="45dp"
             android:ems="10"
             android:maxLength="30"
+            android:background="#ffffff"
             android:inputType="text"
             android:labelFor="@+id/viewTitulo"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
