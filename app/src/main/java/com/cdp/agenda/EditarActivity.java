@@ -36,7 +36,7 @@ public class EditarActivity extends AppCompatActivity {
     boolean correcto = false;
     Contactos contacto;
     int id = 0;
-    //private int dia, mes, anio, hora, minutos;
+    private int dia, mes, anio, hora, minutos;
 
     private int alarmID = 2;
 
@@ -141,7 +141,7 @@ public class EditarActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onClick(View v) {
-        if (v == bFecha) {
+        if (v == aFecha) {
             final Calendar now = Calendar.getInstance();
             int actualDay = now.get(Calendar.DAY_OF_MONTH);
             int actualMonth = now.get(Calendar.MONTH)+1;
@@ -166,16 +166,16 @@ public class EditarActivity extends AppCompatActivity {
                     if(year > actualYear){
                         eFecha.setText(year+ "-" + mes + "-" + dia);
                     }else if(year < actualYear){
-                        Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EditarActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
                     }else if(year == actualYear){
                         if((monthOfYear+1)>actualMonth){
                             eFecha.setText(year+ "-" + mes + "-" + dia);
                         }else if((monthOfYear+1)<actualMonth){
-                            Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                            Toast.makeText(EditarActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
                         }else if((monthOfYear+1)==actualMonth){
                             if(dayOfMonth>=actualDay){
                                 eFecha.setText(year+ "-" + mes + "-" + dia);
-                            }else Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                            }else Toast.makeText(EditarActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
                         }
                     }
 

@@ -43,7 +43,7 @@ public class NuevoActivity extends AppCompatActivity {
     private String titulo,time,fecha,direccion,descripcion;
     RequestQueue requestQueue;
 
-    //private int dia, mes, anio, hora, minutos;
+    private int dia, mes, anio, hora, minutos;
     private int alarmID = 1; //para notificaciones
     private SharedPreferences settings; //notificaciones
 
