@@ -16,13 +16,23 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.cdp.agenda.db.DbContactos;
 import com.cdp.agenda.entidades.Contactos;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class programareventodeAdultoMayor extends AppCompatActivity {
 
@@ -36,13 +46,15 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
     Contactos contacto;
     int id = 0;
     private int dia, mes, anio, hora, minutos;
+    private String titulo,time,fecha,direccion,descripcion;
+    RequestQueue requestQueue;
     @SuppressLint("RestrictedApi")
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_programareventode_adulto_mayor);
-
+        requestQueue= Volley.newRequestQueue(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 //------------------------DARWYN
@@ -93,11 +105,19 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
         btnGuarda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                titulo=txtTitulo.getText().toString().trim();
+                fecha=eFecha.getText().toString().trim();
+                time=eHora.getText().toString().trim();
+                descripcion=txtDescripcion.getText().toString().trim();
+                direccion=txtDireccion.getText().toString().trim();
+
+
                 if (!txtTitulo.getText().toString().equals("") && !eHora.getText().toString().equals("") &&
                         !eFecha.getText().toString().equals("")) {
                     /*correcto = dbContactos.editarContacto(id, txtTitulo.getText().toString(), eHora.getText().toString(), eFecha.getText().toString(),
                             txtDireccion.getText().toString(), txtDescripcion.getText().toString()
                     );*/
+                    registrarActivity("https://bdconandroidstudio.000webhostapp.com/registrar.php");
                     String[] parts = txtTitulo.getText().toString().split("");
                     String primero  =parts[0];
                     if (primero.equals(" ")){
@@ -176,5 +196,35 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
             }, hora, minutos, false);
             timePickerDialog.show();
         }
+    }
+
+    public void registrarActivity(String URL){
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros=new HashMap<String,String>();
+                parametros.put("titulo",titulo);
+                parametros.put("hora",time);
+                parametros.put("fecha",fecha);
+                parametros.put("descripcion",descripcion);
+                parametros.put("direccion",direccion);
+
+                return parametros;
+            }
+        };
+
+        requestQueue.add(stringRequest);
+
     }
 }

@@ -80,11 +80,11 @@ public class NuevoActivity extends AppCompatActivity {
                 descripcion=txtDescripcion.getText().toString().trim();
                 direccion=txtDireccion.getText().toString().trim();
 
-                registrarActivity("https://bdconandroidstudio.000webhostapp.com/registrar.php");
+
 
                 if (!txtTitulo.getText().toString().equals("")
                         && !eFecha.getText().toString().equals("")&& !eHora.getText().toString().equals("")) {
-
+                    registrarActivity("https://bdconandroidstudio.000webhostapp.com/registrar.php");
                     String[] parts = txtTitulo.getText().toString().split("");
                     String primero  =parts[0];
                     if (primero.equals(" ")){
