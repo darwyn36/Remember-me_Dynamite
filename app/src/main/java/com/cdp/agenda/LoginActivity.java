@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     Spinner spiRol;
     String URL;
     boolean res;
-
+    boolean existe;
     //variables que guardaran lo que escriba es usuario
     String usuario;
     String contra;
@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         user=(TextInputLayout) findViewById(R.id.usuario);
         contrasenia=(TextInputLayout) findViewById(R.id.contrasenia);
         spiRol = findViewById(R.id.spirol);
+
     }
     public void registrar(View view){
         Intent intent= new Intent(LoginActivity.this,RegistroActivity.class);
@@ -65,9 +66,14 @@ public class LoginActivity extends AppCompatActivity {
                 verificarLogin(URL,contra,"responsable");
 
             }
+            if (existe==false){
+                Toast.makeText(LoginActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
+            }
+
         }else{
             Toast.makeText(LoginActivity.this, "Usuario o contraseña vacíos", Toast.LENGTH_LONG).show();
         }
+
     }
 
 
@@ -87,37 +93,31 @@ public class LoginActivity extends AppCompatActivity {
                             contrasenia= response.getString("contrasenia").toString();
 
 
-
-
-
-
                             if (contrasenia.equals(contra)) {
+                                existe=true;
                                 if(rol.equals("adulto")) {
                                     Intent intent = new Intent(LoginActivity.this, mainAdulto2.class);
                                     intent.putExtra("usuarioLogin",usuario);
                                     intent.putExtra("contraseniaLogin",contra);
                                     startActivity(intent);
+                                    Toast.makeText(LoginActivity.this, "Se ingreso como adulto mayor", Toast.LENGTH_LONG).show();
                                 }
                                 if(rol.equals("responsable")){
                                     Intent intent= new Intent(LoginActivity.this,MainActivity.class);//ventana del responsable
                                     intent.putExtra("usuarioLogin",usuario);
                                     intent.putExtra("contraseniaLogin",contra);
                                     startActivity(intent);
-                                    Toast.makeText(LoginActivity.this, "Se ingreso a responsable", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginActivity.this, "Se ingreso como responsable", Toast.LENGTH_LONG).show();
                                 }
                             }else{
-                                Toast.makeText(LoginActivity.this, "Usuario o contraseña  incorrecto", Toast.LENGTH_LONG).show();
+                                existe=false;
                             }
-
-
-
-
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
 
                         }
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -130,6 +130,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         requestQueue.add(jsonObjectRequest);
+
 
     }
 }
