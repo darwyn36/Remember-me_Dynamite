@@ -13,6 +13,7 @@ public class Usuario {
     public Usuario(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
+        
     }
 
     public Usuario(Integer id, String nombre, String apellidoPaterno, String apellidoMaterno) {
