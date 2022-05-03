@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFE8D6"
     android:orientation="vertical"
     tools:context=".mainAdulto2">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +24,8 @@
         <SearchView
             android:id="@+id/txtBuscar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listaContactos"
@@ -40,7 +43,7 @@
             android:clickable="true"
             android:focusable="true"
             android:src="@drawable/ic_add"
-            app:backgroundTint="#822DE3"
+            app:backgroundTint="#005F73"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
     </LinearLayout>
 

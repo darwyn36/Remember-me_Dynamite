@@ -226,7 +226,7 @@
             android:onClick="onClick"
             android:text="@string/btn_Registrar"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
@@ -247,7 +247,7 @@
             android:onClick="volverLogin"
             android:text="@string/btn_Cancelar"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:cornerRadius="10dp" />
 
 

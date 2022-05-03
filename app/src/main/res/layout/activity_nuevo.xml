@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFE8D6"
     android:orientation="vertical"
     tools:context=".NuevoActivity">
 
@@ -26,7 +27,6 @@
             android:orientation="vertical">
 
 
-
             <TextView
                 android:id="@+id/viewTitulo"
                 android:layout_width="wrap_content"
@@ -40,6 +40,7 @@
                 android:id="@+id/txtTitulo"
                 android:layout_width="381dp"
                 android:layout_height="50dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:inputType="text"
                 android:labelFor="@+id/viewTitulo"
@@ -55,12 +56,14 @@
                 android:onClick="onClick"
                 android:text="Hora"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/eHora"
                 android:layout_width="163dp"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
                 android:text=" "
                 android:textColor="#100F0F"
                 android:textSize="24sp" />
@@ -72,12 +75,14 @@
                 android:backgroundTint="#005F73"
                 android:onClick="onClick"
                 android:text="Fecha"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/eFecha"
                 android:layout_width="166dp"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
                 android:textColor="#181718"
                 android:textSize="24sp" />
 
@@ -94,6 +99,7 @@
                 android:id="@+id/txtDireccion"
                 android:layout_width="381dp"
                 android:layout_height="70dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:inputType="text"
                 android:labelFor="@+id/viewDireccion"
@@ -113,6 +119,7 @@
                 android:id="@+id/txtDescripcion"
                 android:layout_width="378dp"
                 android:layout_height="67dp"
+                android:background="#FFFFFF"
                 android:ems="10"
                 android:inputType="text"
                 android:labelFor="@+id/viewDescripcion"
@@ -135,7 +142,7 @@
                 android:text="@string/btn_guarda"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 tools:ignore="RtlCompat" />
 
             <Button
@@ -144,12 +151,12 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#005F73"
                 android:text="Borrar"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
     </ScrollView>
-
 
 
 </LinearLayout>
