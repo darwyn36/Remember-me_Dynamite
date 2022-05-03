@@ -74,21 +74,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
-    <ImageView
-        android:id="@+id/idSalir"
-        android:layout_width="54dp"
-        android:layout_height="51dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginStart="288dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="69dp"
-        android:layout_marginBottom="107dp"
-        android:clickable="true"
-        android:src="@drawable/salir"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idverLista" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

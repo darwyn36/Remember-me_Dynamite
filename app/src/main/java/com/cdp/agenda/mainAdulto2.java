@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
@@ -26,7 +27,7 @@ public class mainAdulto2 extends AppCompatActivity implements SearchView.OnQuery
     ArrayList<Contactos> listaArrayContactos;
     FloatingActionButton fabNuevo;
     ListaContactosAdapter adapter;
-    ImageView idSalir;
+    //ImageView idSalir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class mainAdulto2 extends AppCompatActivity implements SearchView.OnQuery
         setContentView(R.layout.activity_main_adulto2);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        idSalir = (ImageView) findViewById(R.id.idSalir);
+        /*idSalir = (ImageView) findViewById(R.id.idSalir);
 
         idSalir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +44,7 @@ public class mainAdulto2 extends AppCompatActivity implements SearchView.OnQuery
                 startActivity(intent);
 
             }
-        });
+        });*/
 
         txtBuscar = findViewById(R.id.txtBuscar);
         listaContactos = findViewById(R.id.listaContactos);
@@ -74,8 +75,25 @@ public class mainAdulto2 extends AppCompatActivity implements SearchView.OnQuery
         return true;
     }
 
+
     private void nuevoRegistro(){
         Intent intent = new Intent(this, NuevoActivity.class);
+        startActivity(intent);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.idcerrar:
+                llevarLogin();
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    private void llevarLogin(){
+        Intent intent= new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 

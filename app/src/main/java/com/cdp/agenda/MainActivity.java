@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity  {
     private Button boton;
     private Button button;
     private Button idverLista;
-    ImageView idSalir;
+    //ImageView idSalir;
 
     SearchView txtBuscar;
     //RecyclerView listaContactos;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.programar);
 
-        idSalir = (ImageView) findViewById(R.id.idSalir);
+       // idSalir = (ImageView) findViewById(R.id.idSalir);
 
         //inicializar componentes
         spinner = findViewById(R.id.spinner);
@@ -54,14 +55,14 @@ public class MainActivity extends AppCompatActivity  {
 
         //Acciones del boton
 
-        idSalir.setOnClickListener(new View.OnClickListener() {
+        /*idSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( MainActivity.this,LoginActivity.class);
                 startActivity(intent);
 
             }
-        });
+        });*/
 
         idverLista.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,16 +147,20 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
-    /*public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
-            case R.id.menuNuevo:
-                nuevoRegistro();
+            case R.id.idcerrar:
+                llevarLogin();
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
+    private void llevarLogin(){
+        Intent intent= new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 
     /*private void nuevoRegistro(){
         Intent intent = new Intent(this, NuevoActivity.class);
