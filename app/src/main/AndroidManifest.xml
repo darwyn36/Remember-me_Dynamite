@@ -37,7 +37,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".pantalla">
+        <activity android:name=".pantalla"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

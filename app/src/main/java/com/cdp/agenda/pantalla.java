@@ -2,6 +2,7 @@ package com.cdp.agenda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.os.Bundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class pantalla extends AppCompatActivity {
+public class pantalla extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
