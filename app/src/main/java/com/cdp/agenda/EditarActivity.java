@@ -52,14 +52,12 @@ public class EditarActivity extends AppCompatActivity {
 
         actividad=this;
 
-//------------------------DARWYN
         aHora=(Button)findViewById(R.id.aHora);
         aFecha=(Button)findViewById(R.id.aFecha);
         eHora= findViewById(R.id.eHora);
         eFecha= findViewById(R.id.eFecha);
         aHora.setOnClickListener(this::onClick);
         aFecha.setOnClickListener(this::onClick);
-//----------------------------------
 
 
         txtTitulo = findViewById(R.id.txtTitulo);
@@ -91,10 +89,8 @@ public class EditarActivity extends AppCompatActivity {
             eFecha.setText(contacto.getFecha());
             txtDireccion.setText(contacto.getDireccion());
             txtDescripcion.setText(contacto.getDescripcion());
-            //-----------------DARWYN-----
             eHora.setInputType(InputType.TYPE_NULL);
             eFecha.setInputType(InputType.TYPE_NULL);
-//---------------------------
         }
 
         btnGuarda.setOnClickListener(new View.OnClickListener() {
@@ -144,14 +140,17 @@ public class EditarActivity extends AppCompatActivity {
         intent.putExtra("ID", id);
         startActivity(intent);
     }
-    //----------------------------------------------------------DARWYN
     public void onClick(View v) {
+        if (v == bFecha) {
+            final Calendar now = Calendar.getInstance();
+            int actualDay = now.get(Calendar.DAY_OF_MONTH);
+            int actualMonth = now.get(Calendar.MONTH)+1;
+            int actualYear = now.get(Calendar.YEAR);
 
-        if (v == aFecha) {
             final Calendar c = Calendar.getInstance();
-            int dia = c.get(Calendar.DAY_OF_MONTH);
-            int mes = c.get(Calendar.MONTH);
-            int anio = c.get(Calendar.YEAR);
+            dia = c.get(Calendar.DAY_OF_MONTH);
+            mes = c.get(Calendar.MONTH);
+            anio = c.get(Calendar.YEAR);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -160,22 +159,31 @@ public class EditarActivity extends AppCompatActivity {
                     String dia= dayOfMonth+"";
                     if((monthOfYear+1)<10){
                         mes = "0"+(monthOfYear+1);
-
                     }
                     if(dayOfMonth<10){
                         dia = "0"+(dayOfMonth);
-
                     }
-
-                    GESTION = year;
-                    MES = monthOfYear;
-                    DIA = dayOfMonth;
-
-                    eFecha.setText(year + "-" + mes + "-" + dia);
+                    if(year > actualYear){
+                        eFecha.setText(year+ "-" + mes + "-" + dia);
+                    }else if(year < actualYear){
+                        Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                    }else if(year == actualYear){
+                        if((monthOfYear+1)>actualMonth){
+                            eFecha.setText(year+ "-" + mes + "-" + dia);
+                        }else if((monthOfYear+1)<actualMonth){
+                            Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        }else if((monthOfYear+1)==actualMonth){
+                            if(dayOfMonth>=actualDay){
+                                eFecha.setText(year+ "-" + mes + "-" + dia);
+                            }else Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
                 }
             }, 2022, mes, dia);
+
             datePickerDialog.show();
+
         }
         if (v == aHora) {
             final Calendar c = Calendar.getInstance();
@@ -194,6 +202,5 @@ public class EditarActivity extends AppCompatActivity {
             timePickerDialog.show();
         }
     }
-    //----------------------------------------------------
 
 }
