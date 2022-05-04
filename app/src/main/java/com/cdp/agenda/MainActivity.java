@@ -39,10 +39,26 @@ public class MainActivity extends AppCompatActivity  {
     FloatingActionButton fabNuevo;
     //ListaContactosAdapter adapter;
 
+
+    //para recibir los valores de login
+    Bundle getUserR,getContraR;
+    //para guardar los valores recibidos de login
+    String nameGetR,passwordGetR;
+    ///fin
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.programar);
+
+        //recibimos los valores
+        getUserR=getIntent().getExtras();
+        getContraR=getIntent().getExtras();
+        //guardamos los valores
+        nameGetR=getUserR.getString("usuarioLogin");
+        passwordGetR=getContraR.getString("contraseniaLogin");
+        //fin, ahora pueden usar las variables nameGetR,passwordGetR como requieran
+        
 
         //inicializar componentes
         spinner = findViewById(R.id.spinner);

@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.cdp.agenda.adaptadores.ListaContactosAdapter;
 import com.cdp.agenda.db.DbContactos;
@@ -26,6 +27,12 @@ public class mainAdulto2 extends AppCompatActivity implements SearchView.OnQuery
     ArrayList<Contactos> listaArrayContactos;
     FloatingActionButton fabNuevo;
     ListaContactosAdapter adapter;
+
+    //para recibir los valores de login
+    Bundle getUserA,getContraA;
+    //para guardar los valores recibidos de login
+    String nameGetA,passwordGetA;
+    ///fin
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +43,14 @@ public class mainAdulto2 extends AppCompatActivity implements SearchView.OnQuery
         listaContactos = findViewById(R.id.listaContactos);
         fabNuevo = findViewById(R.id.favNuevo);
         listaContactos.setLayoutManager(new LinearLayoutManager(this));
+
+        //recibimos los valores
+        getUserA=getIntent().getExtras();
+        getContraA=getIntent().getExtras();
+        //guardamos los valores
+        nameGetA=getUserA.getString("usuarioLogin");
+        passwordGetA=getContraA.getString("contraseniaLogin");
+        //fin, ahora pueden usar las variables nameGetA,passwordGetA como requieran
 
         DbContactos dbContactos = new DbContactos(mainAdulto2.this);
 
