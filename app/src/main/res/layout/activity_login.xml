@@ -127,8 +127,7 @@
             android:onClick="validarDatos"
             android:text="Iniciar Sesión"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btnRegistrar"
@@ -139,8 +138,7 @@
             android:onClick="registrar"
             android:text="Registrarse"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
