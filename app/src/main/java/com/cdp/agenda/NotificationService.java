@@ -110,6 +110,7 @@ public class NotificationService extends IntentService {
                     .setAutoCancel(true)
                     .setSound(soundUri)
                     .setContentIntent(pendingIntent)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                     //.addAction(R.drawable.ic_stat_name,getString(R.string.Ver_Informacion), snoozePendingIntent)//+++++++)
                     .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
             Notification notification = builder.build(); //viene de "notificationManager.notify(idAlarm, mNotifyBuilder.build());"
@@ -155,6 +156,7 @@ public class NotificationService extends IntentService {
                     .setSound(soundUri)
                     .setAutoCancel(true)
                     .setContentTitle(tituloda).setCategory(Notification.CATEGORY_SERVICE)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                     //.setContentTitle(getApplicationContext().getString(R.string.app_name)).setCategory(Notification.CATEGORY_SERVICE) //titulo notificacion
                     .setContentText(message).build();
             notificationManager.notify(NOTIFICATION_ID, notification);

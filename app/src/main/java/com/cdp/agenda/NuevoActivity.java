@@ -148,9 +148,9 @@ public class NuevoActivity extends AppCompatActivity {
             int actualYear = now.get(Calendar.YEAR);
 
             final Calendar c = Calendar.getInstance();
-            dia = c.get(Calendar.DAY_OF_MONTH);
-            mes = c.get(Calendar.MONTH);
-            anio = c.get(Calendar.YEAR);
+            int dia = c.get(Calendar.DAY_OF_MONTH);
+            int mes = c.get(Calendar.MONTH);
+            int anio = c.get(Calendar.YEAR);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -178,7 +178,9 @@ public class NuevoActivity extends AppCompatActivity {
                             }else Toast.makeText(NuevoActivity.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
                         }
                     }
-
+                    GESTION = year;
+                    MES = monthOfYear;
+                    DIA = dayOfMonth;
                 }
             }, 2022, mes, dia);
 

@@ -48,6 +48,10 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
     private int dia, mes, anio, hora, minutos;
     private String titulo,time,fecha,direccion,descripcion;
     RequestQueue requestQueue;
+
+    private int alarmID = 1; //para notificaciones
+
+    private int HORA, MINUTO, DIA, MES, GESTION;
     @SuppressLint("RestrictedApi")
 
     @Override
@@ -129,6 +133,14 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
                             txtDireccion.getText().toString(), txtDescripcion.getText().toString()
                     );
 
+                    Calendar today = Calendar.getInstance();
+
+                    today.set(GESTION, MES, DIA, HORA, MINUTO, 0);
+
+                    Utils.setAlarm(alarmID, today.getTimeInMillis(), programareventodeAdultoMayor.this, txtTitulo.getText().toString(), txtDescripcion.getText().toString());
+
+                    Toast.makeText(programareventodeAdultoMayor.this, ""+today.getTimeInMillis(), Toast.LENGTH_LONG).show();
+
                     if(id!=0){
                         Toast.makeText(programareventodeAdultoMayor.this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
                         verRegistro();
@@ -156,10 +168,15 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
     public void onClick(View v) {
 
         if (v == aFecha) {
+            final Calendar now = Calendar.getInstance();
+            int actualDay = now.get(Calendar.DAY_OF_MONTH);
+            int actualMonth = now.get(Calendar.MONTH)+1;
+            int actualYear = now.get(Calendar.YEAR);
+
             final Calendar c = Calendar.getInstance();
-            dia = c.get(Calendar.DAY_OF_MONTH);
-            mes = c.get(Calendar.MONTH);
-            anio = c.get(Calendar.YEAR);
+            int dia = c.get(Calendar.DAY_OF_MONTH);
+            int mes = c.get(Calendar.MONTH);
+            int anio = c.get(Calendar.YEAR);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -168,30 +185,54 @@ public class programareventodeAdultoMayor extends AppCompatActivity {
                     String dia= dayOfMonth+"";
                     if((monthOfYear+1)<10){
                         mes = "0"+(monthOfYear+1);
-
                     }
                     if(dayOfMonth<10){
                         dia = "0"+(dayOfMonth);
-
                     }
-
-
-
-                    eFecha.setText(year + "-" + mes + "-" + dia);
-
+                    if(year > actualYear){
+                        eFecha.setText(year+ "-" + mes + "-" + dia);
+                    }else if(year < actualYear){
+                        Toast.makeText(programareventodeAdultoMayor.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                    }else if(year == actualYear){
+                        if((monthOfYear+1)>actualMonth){
+                            eFecha.setText(year+ "-" + mes + "-" + dia);
+                        }else if((monthOfYear+1)<actualMonth){
+                            Toast.makeText(programareventodeAdultoMayor.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        }else if((monthOfYear+1)==actualMonth){
+                            if(dayOfMonth>=actualDay){
+                                eFecha.setText(year+ "-" + mes + "-" + dia);
+                            }else Toast.makeText(programareventodeAdultoMayor.this, "NO SE PUEDEN REGISTRAR FECHAS ANTERIORES", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    GESTION = year;
+                    MES = monthOfYear;
+                    DIA = dayOfMonth;
                 }
+
             }, 2022, mes, dia);
+
             datePickerDialog.show();
+
         }
         if (v == aHora) {
             final Calendar c = Calendar.getInstance();
-            hora = c.get(Calendar.HOUR_OF_DAY);
-            minutos = c.get(Calendar.MINUTE);
+            int hora = c.get(Calendar.HOUR_OF_DAY);
+            int minutos = c.get(Calendar.MINUTE);
 
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    String finalHour, finalMinute; //notificaciones
+
                     eHora.setText(String.format("%02d:%02d", hourOfDay, minute));
+
+                    finalHour = "" + hourOfDay;//notificaciones
+                    finalMinute = "" + minute; //notificaciones
+                    if(hourOfDay < 10) finalHour = "0" + hourOfDay; //notificaciones
+                    if(minute < 10) finalMinute = "0" + minute; //notificaciones
+
+                    HORA = hourOfDay;
+                    MINUTO = minute;
                 }
             }, hora, minutos, false);
             timePickerDialog.show();
