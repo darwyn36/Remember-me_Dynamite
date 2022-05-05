@@ -62,25 +62,25 @@ public class MainActivity extends AppCompatActivity  {
 
         //inicializar componentes
         spinner = findViewById(R.id.spinner);
-        boton = findViewById(R.id.button2);
-        idverLista= findViewById(R.id.idverLista);
+        boton = (Button) findViewById(R.id.button2);
+        idverLista= (Button) findViewById(R.id.idverLista);
 
         //Acciones del boton
-        idverLista.setOnClickListener(new View.OnClickListener() {
+         idverLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( MainActivity.this,mainAdulto2.class);
                 startActivity(intent);
-
             }
-        });
+         });
 
-        boton.setOnClickListener(new View.OnClickListener() {
+
+           boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 llenarSpinner();
             }
-        });
+           });
 
 
             button = (Button)findViewById(R.id.button);
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity  {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this,"Realice una seleccion", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Realice una selección", Toast.LENGTH_SHORT).show();
             }
 
             @Override

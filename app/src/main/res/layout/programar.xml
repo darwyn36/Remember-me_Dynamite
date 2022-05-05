@@ -11,9 +11,9 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="153dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="268dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="4dp"
         android:layout_marginBottom="248dp"
         android:background="#005F73"
         android:text="Actualizar"
@@ -25,8 +25,8 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="239dp"
-        android:layout_height="53dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="156dp"
         android:background="#005F73"
         android:text="Programar Actividad"
@@ -62,8 +62,8 @@
 
     <Button
         android:id="@+id/idverLista"
-        android:layout_width="312dp"
-        android:layout_height="46dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginTop="13dp"
         android:background="#005F73"
         android:text="VER ACTIVIDADES PROGRAMADAS"
