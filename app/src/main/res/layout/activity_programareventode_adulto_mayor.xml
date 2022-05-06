@@ -75,7 +75,7 @@
              tools:layout_editor_absoluteX="19dp"
              tools:layout_editor_absoluteY="171dp" />
 
-         <EditText
+         <TextView
              android:id="@+id/editTextTextPersonName2"
              android:layout_width="163dp"
              android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
              tools:layout_editor_absoluteX="19dp"
              tools:layout_editor_absoluteY="282dp" />
 
-         <EditText
+         <TextView
              android:id="@+id/editTextTextPersonName3"
              android:layout_width="163dp"
              android:layout_height="wrap_content"
@@ -110,6 +110,7 @@
              tools:ignore="MissingConstraints"
              tools:layout_editor_absoluteX="16dp"
              tools:layout_editor_absoluteY="343dp" />
+
 
          <TextView
              android:id="@+id/textView7"
